@@ -1,3 +1,10 @@
 {
-  "cSpell.ignoreWords": ["DOCKERHUB", "psycopg"]
+  "cSpell.ignoreWords": [
+    "DOCKERHUB",
+    "authtoken",
+    "psycopg",
+    "testpass",
+    "userpass",
+    "viewsets"
+  ]
 }
