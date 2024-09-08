@@ -10,12 +10,20 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-$o*&#c%427p4^g33_g3ju2fm-h)ir*q8b2&9(j0f(p^dork4-0'
+SECRET_KEY = os.environ.get("SECRET_KEY", "changeme")
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = bool(int(os.environ.get("DEBUG", 0)))
 
 ALLOWED_HOSTS = []
+ALLOWED_HOSTS.extend(
+    filter(
+        None,
+        #! Insted of None u can use lambda function for filter empty string value.
+        #! lambda host: host.strip() != '',
+        os.environ.get("ALLOWED_HOSTS", '').split(","),
+    )
+)
 
 
 # Application definition
